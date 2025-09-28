@@ -1,0 +1,13 @@
+.confirm-delete {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.confirm-delete__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

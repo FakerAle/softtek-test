@@ -1,0 +1,11 @@
+/* button.css */
+.btn{
+  padding:.5rem 1rem;border:0;border-radius:4px;font-weight:600;font-size:.9rem;
+  cursor:pointer;transition:background .15s ease;
+}
+.btn--primary  {background:#005fa3;color:#fff;}
+.btn--primary:hover{background:#004b82;}
+.btn--secondary{background:#1e3a8a;}
+.btn--secondary:hover{background:#132862;}
+.btn--danger   {background:#d93025;color:#fff;}
+.btn--danger:hover{background:#b4251b;}

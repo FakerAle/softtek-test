@@ -1,0 +1,5 @@
+/* navbar.css */
+.nav{background:#005fa3;color:#fff;padding:.5rem 0;}
+.nav__inner{max-width:var(--container);margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 1rem}
+.nav__brand{font-weight:700;font-size:1.1rem;color:#fff}
+.nav__user{display:flex;gap:.75rem;align-items:center;font-size:.9rem}

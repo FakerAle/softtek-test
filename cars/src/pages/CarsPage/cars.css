@@ -1,0 +1,329 @@
+.cars {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.cars__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  position: relative;
+}
+
+.cars__header::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 3px;
+}
+
+.cars__header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  background: linear-gradient(135deg, #1e293b, #475569);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.cars__header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 2px;
+}
+
+.cars__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2rem;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.cars__grid:empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Estado de carga */
+.cars__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cars__loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e2e8f0;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.cars__loading-text {
+  color: #64748b;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Contador de vehículos */
+.cars__count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Botón mejorado */
+.cars__header .btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.cars__header .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cars__header .btn:hover::before {
+  left: 100%;
+}
+
+.cars__header .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.cars__header .btn:active {
+  transform: translateY(0);
+}
+
+/* Efectos de hover en la grid */
+.cars__grid > * {
+  transition: transform 0.3s ease;
+}
+
+.cars__grid:hover > * {
+  opacity: 0.7;
+}
+
+.cars__grid > *:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Entrada escalonada de las cards */
+.cars__grid > * {
+  animation: cardEntrance 0.6s ease-out;
+}
+
+.cars__grid > *:nth-child(1) { animation-delay: 0.1s; }
+.cars__grid > *:nth-child(2) { animation-delay: 0.2s; }
+.cars__grid > *:nth-child(3) { animation-delay: 0.3s; }
+.cars__grid > *:nth-child(4) { animation-delay: 0.4s; }
+.cars__grid > *:nth-child(5) { animation-delay: 0.5s; }
+.cars__grid > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Empty state mejorado */
+.cars__empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  border: 2px dashed #cbd5e1;
+  backdrop-filter: blur(10px);
+}
+
+.cars__empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
+  display: block;
+}
+
+.cars__empty-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.cars__empty-message {
+  font-size: 1.1rem;
+  color: #64748b;
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0 auto 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .cars {
+    padding: 1.5rem;
+  }
+  
+  .cars__grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cars {
+    padding: 1rem;
+  }
+  
+  .cars__header {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+    text-align: center;
+  }
+  
+  .cars__header h2 {
+    font-size: 2rem;
+    align-self: center;
+  }
+  
+  .cars__header h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .cars__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .cars__header .btn {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cars__header h2 {
+    font-size: 1.75rem;
+  }
+  
+  .cars__empty-title {
+    font-size: 1.5rem;
+  }
+  
+  .cars__empty-message {
+    font-size: 1rem;
+  }
+}
+
+/* Efectos de profundidad */
+.cars {
+  position: relative;
+}
+
+.cars::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Scroll personalizado */
+.cars::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cars::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.cars::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 4px;
+}
+
+.cars::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}

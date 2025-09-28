@@ -1,0 +1,270 @@
+.car-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.car-form__header {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.car-form__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #1e293b, #475569);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  word-wrap: break-word;
+}
+
+.car-form__subtitle {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.car-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.car-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.car-form__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.car-form__label::after {
+  content: '*';
+  color: #ef4444;
+  font-size: 1rem;
+  margin-left: 0.25rem;
+}
+
+.car-form__label:has(+ .car-form__input:optional)::after {
+  content: '';
+}
+
+.car-form__input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a202c;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  min-width: 0; /* Important for flexbox shrinking */
+}
+
+.car-form__input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #f8fafc;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.car-form__input:hover {
+  border-color: #cbd5e1;
+}
+
+.car-form__input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.car-form__input--error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.car-form__input--error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.car-form__error {
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.car-form__error::before {
+  content: '⚠';
+  font-size: 0.7rem;
+}
+
+.car-form__hint {
+  color: #64748b;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+/* Layout para campos en fila en pantallas grandes */
+@media (min-width: 768px) {
+  .car-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .car-form__fields {
+    gap: 1.25rem;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .car-form {
+    gap: 1rem;
+  }
+  
+  .car-form__input {
+    padding: 0.75rem 0.875rem;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+.car-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .car-form__actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+/* Botones responsivos */
+.car-form .btn {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  min-width: 120px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 480px) {
+  .car-form .btn {
+    flex: 0 1 auto;
+    min-width: 140px;
+  }
+}
+
+.car-form .btn[type="submit"] {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.car-form .btn[type="submit"]:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+}
+
+.car-form .btn--secondary {
+  background: #f8fafc;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+}
+
+.car-form .btn--secondary:hover {
+  background: #f1f5f9;
+  color: #374151;
+  border-color: #cbd5e1;
+}
+
+/* Select personalizado */
+.car-form__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+/* Datalist styles */
+.car-form__field {
+  position: relative;
+}
+
+datalist {
+  position: absolute;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* Animaciones suaves */
+.car-form {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Asegurar que el modal contenga bien el formulario */
+.modal__content {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Prevenir scroll horizontal */
+body.modal-open {
+  overflow: hidden;
+}
